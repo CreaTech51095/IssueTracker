@@ -9,7 +9,7 @@ import { cn } from '../../lib/utils';
 export default function IssueList() {
     const issues = useIssueStore((state) => state.issues);
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-    const [selectedIssue, setSelectedIssue] = useState<Issue | null>(null);
+    const [selectedIssueId, setSelectedIssueId] = useState<string | null>(null);
     const [filterStatus, setFilterStatus] = useState<IssueStatus | 'ALL'>('ALL');
     const [filterPriority, setFilterPriority] = useState<IssuePriority | 'ALL'>('ALL');
     const [searchQuery, setSearchQuery] = useState('');
@@ -85,7 +85,7 @@ export default function IssueList() {
                         <IssueCard
                             key={issue.id}
                             issue={issue}
-                            onClick={() => setSelectedIssue(issue)}
+                            onClick={() => setSelectedIssueId(issue.id)}
                         />
                     ))}
                 </div>
@@ -107,9 +107,9 @@ export default function IssueList() {
             />
 
             <IssueDetailsModal
-                issue={selectedIssue}
-                isOpen={!!selectedIssue}
-                onClose={() => setSelectedIssue(null)}
+                issueId={selectedIssueId}
+                isOpen={!!selectedIssueId}
+                onClose={() => setSelectedIssueId(null)}
             />
         </div>
     );

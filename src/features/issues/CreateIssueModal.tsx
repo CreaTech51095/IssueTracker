@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Modal } from '../../components/ui/Modal';
+import { UserSelect } from '../../components/UserSelect';
 import { useIssueStore } from '../../lib/issue-store';
 import { cn } from '../../lib/utils';
 
@@ -23,7 +24,7 @@ interface CreateIssueModalProps {
 export function CreateIssueModal({ isOpen, onClose }: CreateIssueModalProps) {
     const addIssue = useIssueStore((state) => state.addIssue);
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<IssueForm>({
+    const { register, handleSubmit, reset, setValue, watch, formState: { errors } } = useForm<IssueForm>({
         resolver: zodResolver(issueSchema),
         defaultValues: {
             status: 'OPEN',
@@ -71,12 +72,12 @@ export function CreateIssueModal({ isOpen, onClose }: CreateIssueModalProps) {
                         <label className="block text-sm font-medium mb-1.5">Status</label>
                         <select
                             {...register('status')}
-                            className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                            className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                         >
-                            <option value="OPEN">Open</option>
-                            <option value="IN_PROGRESS">In Progress</option>
-                            <option value="DONE">Done</option>
-                            <option value="CANCELED">Canceled</option>
+                            <option value="OPEN" className="bg-background text-foreground">Open</option>
+                            <option value="IN_PROGRESS" className="bg-background text-foreground">In Progress</option>
+                            <option value="DONE" className="bg-background text-foreground">Done</option>
+                            <option value="CANCELED" className="bg-background text-foreground">Canceled</option>
                         </select>
                     </div>
 
@@ -84,21 +85,21 @@ export function CreateIssueModal({ isOpen, onClose }: CreateIssueModalProps) {
                         <label className="block text-sm font-medium mb-1.5">Priority</label>
                         <select
                             {...register('priority')}
-                            className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                            className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                         >
-                            <option value="LOW">Low</option>
-                            <option value="MEDIUM">Medium</option>
-                            <option value="HIGH">High</option>
+                            <option value="LOW" className="bg-background text-foreground">Low</option>
+                            <option value="MEDIUM" className="bg-background text-foreground">Medium</option>
+                            <option value="HIGH" className="bg-background text-foreground">High</option>
                         </select>
                     </div>
                 </div>
 
                 <div>
                     <label className="block text-sm font-medium mb-1.5">Assignee (Optional)</label>
-                    <input
-                        {...register('assignee')}
-                        className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                        placeholder="e.g. j.doe"
+                    <UserSelect
+                        value={watch('assignee')}
+                        onChange={(value) => setValue('assignee', value)}
+                        placeholder="Select a user..."
                     />
                 </div>
 

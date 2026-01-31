@@ -24,9 +24,18 @@ export function IssueCard({ issue, onClick }: IssueCardProps) {
         }
     };
 
+    const canArchive = issue.status === 'DONE' || issue.status === 'CANCELED';
+
     const handleArchive = (e: React.MouseEvent) => {
         e.stopPropagation();
-        toggleArchive(issue.id);
+        if (issue.isArchived) {
+            toggleArchive(issue.id);
+            return;
+        }
+
+        if (canArchive) {
+            toggleArchive(issue.id);
+        }
     };
 
     const handleTakeIssue = (e: React.MouseEvent) => {
@@ -83,8 +92,20 @@ export function IssueCard({ issue, onClick }: IssueCardProps) {
                 <div className="flex items-center gap-1">
                     <button
                         onClick={handleArchive}
-                        className="opacity-0 group-hover:opacity-100 p-1.5 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-md transition-all"
-                        title={issue.isArchived ? "Restore Issue" : "Archive Issue"}
+                        disabled={!issue.isArchived && !canArchive}
+                        className={cn(
+                            "opacity-0 group-hover:opacity-100 p-1.5 rounded-md transition-all",
+                            issue.isArchived || canArchive
+                                ? "text-muted-foreground hover:text-primary hover:bg-primary/10"
+                                : "text-muted-foreground/30 cursor-not-allowed"
+                        )}
+                        title={
+                            issue.isArchived
+                                ? "Restore Issue"
+                                : canArchive
+                                    ? "Archive Issue"
+                                    : "Only done or canceled issues can be archived"
+                        }
                     >
                         {issue.isArchived ? <ArchiveRestore size={14} /> : <Archive size={14} />}
                     </button>
