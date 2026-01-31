@@ -1,0 +1,111 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e7]: IT
+      - generic [ref=e8]: Tracker
+    - navigation [ref=e9]:
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - img [ref=e11]
+        - text: Dashboard
+      - link "Issues" [ref=e16] [cursor=pointer]:
+        - /url: /issues
+        - img [ref=e17]
+        - text: Issues
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]: TE
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: test
+          - paragraph [ref=e25]: test@example.com
+      - button "Sign out" [ref=e26] [cursor=pointer]:
+        - img [ref=e27]
+        - text: Sign out
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - heading "Workspace" [level=1] [ref=e32]
+      - button "New Issue" [ref=e33] [cursor=pointer]:
+        - img [ref=e34]
+        - text: New Issue
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - heading "Dashboard" [level=2] [ref=e38]
+        - paragraph [ref=e39]: Overview of your project status
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - paragraph [ref=e43]: Open
+            - paragraph [ref=e44]: "0"
+          - img [ref=e46]
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - paragraph [ref=e50]: In Progress
+            - paragraph [ref=e51]: "1"
+          - img [ref=e53]
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - paragraph [ref=e58]: Done
+            - paragraph [ref=e59]: "1"
+          - img [ref=e61]
+      - generic [ref=e64]:
+        - heading "Recent Issues" [level=3] [ref=e65]
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - generic [ref=e69]:
+                - img [ref=e70]
+                - textbox "Search issues..." [ref=e73]
+              - combobox [ref=e74]:
+                - option "All Status" [selected]
+                - option "Open"
+                - option "In Progress"
+                - option "Done"
+                - option "Canceled"
+            - button "New Issue" [ref=e75] [cursor=pointer]:
+              - img [ref=e76]
+              - text: New Issue
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - generic [ref=e79]:
+                - generic [ref=e80]:
+                  - generic [ref=e81]:
+                    - generic [ref=e82]: "#1"
+                    - generic [ref=e83]:
+                      - img [ref=e84]
+                      - generic [ref=e87]: Done
+                    - generic [ref=e88]:
+                      - img [ref=e89]
+                      - generic [ref=e92]: High
+                  - heading "Implement Authentication" [level=3] [ref=e93]
+                  - paragraph [ref=e94]: Set up Zustand store and Login page with mock JWT.
+                - button "Delete Issue" [ref=e95] [cursor=pointer]:
+                  - img [ref=e96]
+              - generic [ref=e99]:
+                - generic [ref=e101]:
+                  - img [ref=e102]
+                  - generic [ref=e105]: demo
+                - generic [ref=e106]: less than a minute ago
+            - generic [ref=e107]:
+              - generic [ref=e108]:
+                - generic [ref=e109]:
+                  - generic [ref=e110]:
+                    - generic [ref=e111]: "#2"
+                    - generic [ref=e112]:
+                      - img [ref=e113]
+                      - generic [ref=e116]: In Progress
+                    - generic [ref=e117]:
+                      - img [ref=e118]
+                      - generic [ref=e119]: Medium
+                  - heading "Design Dashboard Layout" [level=3] [ref=e120]
+                  - paragraph [ref=e121]: Create responsive sidebar and header using Tailwind.
+                - button "Delete Issue" [ref=e122] [cursor=pointer]:
+                  - img [ref=e123]
+              - generic [ref=e126]:
+                - generic [ref=e128]:
+                  - img [ref=e129]
+                  - generic [ref=e132]: demo
+                - generic [ref=e133]: less than a minute ago
+```
