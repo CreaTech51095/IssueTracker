@@ -42,7 +42,7 @@ export default function ArchivedIssues() {
             )}
 
             <IssueDetailsModal
-                issue={selectedIssue}
+                issueId={selectedIssue?.id ?? null}
                 isOpen={!!selectedIssue}
                 onClose={() => setSelectedIssue(null)}
             />

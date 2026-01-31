@@ -3,7 +3,7 @@ import IssueList from '../features/issues/IssueList';
 import { CheckCircle2, Circle, Clock } from 'lucide-react';
 
 export default function Dashboard() {
-    const issues = useIssueStore((state) => state.issues);
+    const { issues } = useIssueStore();
 
     const stats = [
         {

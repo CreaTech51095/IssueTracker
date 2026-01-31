@@ -1,0 +1,7 @@
+
+> issue-tracker@0.0.0 build
+> tsc -b && vite build
+
+src/features/issues/components/EmailInputForm.tsx(3,20): error TS2307: Cannot find module '../../lib/utils' or its corresponding type declarations.
+src/pages/ArchivedIssues.tsx(45,17): error TS2322: Type '{ issue: Issue | null; isOpen: boolean; onClose: () => void; }' is not assignable to type 'IntrinsicAttributes & IssueDetailsModalProps'.
+  Property 'issue' does not exist on type 'IntrinsicAttributes & IssueDetailsModalProps'. Did you mean 'issueId'?

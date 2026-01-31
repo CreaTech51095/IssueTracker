@@ -1,14 +1,11 @@
 import { useState, useMemo } from 'react';
-import { Plus, Search, Filter } from 'lucide-react';
-import { useIssueStore, IssueStatus, IssuePriority, Issue } from '../../lib/issue-store';
+import { Search, Filter } from 'lucide-react';
+import { useIssueStore, IssueStatus, IssuePriority } from '../../lib/issue-store';
 import { IssueCard } from './IssueCard';
-import { CreateIssueModal } from './CreateIssueModal';
 import { IssueDetailsModal } from './IssueDetailsModal';
-import { cn } from '../../lib/utils';
 
 export default function IssueList() {
     const issues = useIssueStore((state) => state.issues);
-    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [selectedIssueId, setSelectedIssueId] = useState<string | null>(null);
     const [filterStatus, setFilterStatus] = useState<IssueStatus | 'ALL'>('ALL');
     const [filterPriority, setFilterPriority] = useState<IssuePriority | 'ALL'>('ALL');
@@ -68,14 +65,6 @@ export default function IssueList() {
                         </select>
                     </div>
                 </div>
-
-                <button
-                    onClick={() => setIsCreateModalOpen(true)}
-                    className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm w-full sm:w-auto justify-center"
-                >
-                    <Plus size={16} />
-                    New Issue
-                </button>
             </div>
 
             {/* Grid */}
@@ -100,11 +89,6 @@ export default function IssueList() {
                     </p>
                 </div>
             )}
-
-            <CreateIssueModal
-                isOpen={isCreateModalOpen}
-                onClose={() => setIsCreateModalOpen(false)}
-            />
 
             <IssueDetailsModal
                 issueId={selectedIssueId}

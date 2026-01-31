@@ -1,13 +1,13 @@
 import { IssuePriority } from '../lib/issue-store';
 import { cn } from '../lib/utils';
-import { TrendingUp, Minus, ChevronsDown } from 'lucide-react';
+import { TrendingUp, Minus, ChevronsDown, LucideIcon } from 'lucide-react';
 
 interface PriorityBadgeProps {
     priority: IssuePriority;
     className?: string;
 }
 
-const config: Record<IssuePriority, { icon: any; color: string; label: string }> = {
+const config: Record<IssuePriority, { icon: LucideIcon; color: string; label: string }> = {
     HIGH: {
         icon: TrendingUp,
         color: 'text-red-500',
